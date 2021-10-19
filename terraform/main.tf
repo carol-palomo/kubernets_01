@@ -98,6 +98,7 @@ resource "aws_security_group" "kubernetes_master" {
 resource "aws_security_group" "kubernetes_workers" {
   name        = "kubernetes_workers"
   description = "acessos_workers inbound traffic"
+  vpc_id = "vpc-0304dcb48c5e67fa0"
 
   ingress = [
     {
@@ -135,6 +136,7 @@ resource "aws_security_group" "kubernetes_workers" {
 resource "aws_security_group" "kubernetes_geral" {
   name        = "kubernetes_geral"
   description = "all tcp entre master e nodes do kubernetes"
+  vpc_id = "vpc-0304dcb48c5e67fa0"
 
   ingress = [
     {
