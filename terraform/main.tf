@@ -145,7 +145,7 @@ resource "aws_security_group" "kubernetes_geral" {
       cidr_blocks      = null
       ipv6_cidr_blocks = null,
       prefix_list_ids = null,
-      security_groups: ["${aws_security_group.kubernetes_master.name}", "${aws_security_group.kubernetes_workers.name}"]
+      security_groups: ["${aws_security_group.kubernetes_master.id}", "${aws_security_group.kubernetes_workers.id}"]
       self: null
     },
   ]
