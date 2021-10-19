@@ -100,6 +100,6 @@ output "k8s_master_ssh" {
 }
 
 output "k8s_worker_ssh" {
-  value = zipmap( values(aws_instance.worker).[*].name, values(aws_instance.worker).[*].public_dns )
- 
+  value = aws_instance.worker[0].public_dns
+  value = aws_instance.worker[1].public_dns
 }
