@@ -133,7 +133,7 @@ resource "aws_security_group" "kubernetes_workers" {
 }
 
 resource "aws_security_group" "kubernetes_geral" {
-  name        = "acessos_workers"
+  name        = "kubernetes_geral"
   description = "acessos_workers inbound traffic"
 
   ingress = [
@@ -142,6 +142,8 @@ resource "aws_security_group" "kubernetes_geral" {
       from_port        = 0
       to_port          = 0
       protocol         = "tcp"
+      cidr_blocks      = null
+      ipv6_cidr_blocks = null,
       prefix_list_ids = null,
       security_groups: ["${aws_security_group.kubernetes_master.name}", "${aws_security_group.kubernetes_workers.name}"]
       self: null
