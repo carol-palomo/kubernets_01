@@ -47,7 +47,7 @@ resource "aws_instance" "worker" {
 
 
 resource "aws_security_group" "kubernetes_master" {
-  name        = "allow_ssh_1_vpc_terraform_carol"
+  name        = "kubernetes_master"
   description = "Allow SSH inbound traffic criado pelo terraform VPC"
   vpc_id = "vpc-0304dcb48c5e67fa0"
 
@@ -96,7 +96,7 @@ resource "aws_security_group" "kubernetes_master" {
 }
 
 resource "aws_security_group" "kubernetes_workers" {
-  name        = "acessos_workers"
+  name        = "kubernetes_workers"
   description = "acessos_workers inbound traffic"
 
   ingress = [
@@ -129,6 +129,41 @@ resource "aws_security_group" "kubernetes_workers" {
 
   tags = {
     Name = "kubernetes_workers"
+  }
+}
+
+resource "aws_security_group" "kubernetes_geral" {
+  name        = "acessos_workers"
+  description = "acessos_workers inbound traffic"
+
+  ingress = [
+    {
+      description      = "all tcp entre master e nodes do kubernetes"
+      from_port        = 0
+      to_port          = 0
+      protocol         = "tcp"
+      prefix_list_ids = null,
+      security_groups: ["${aws_security_group.kubernetes_master.name}", "${aws_security_group.kubernetes_workers.name}"]
+      self: null
+    },
+  ]
+
+  egress = [
+    {
+      from_port        = 0
+      to_port          = 0
+      protocol         = "-1"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"],
+      prefix_list_ids = null,
+      security_groups: null,
+      self: null,
+      description: "Libera dados da rede interna"
+    }
+  ]
+
+  tags = {
+    Name = "kubernetes_geral"
   }
 }
 
