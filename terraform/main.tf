@@ -134,7 +134,7 @@ resource "aws_security_group" "kubernetes_workers" {
 
 resource "aws_security_group" "kubernetes_geral" {
   name        = "kubernetes_geral"
-  description = "acessos_workers inbound traffic"
+  description = "all tcp entre master e nodes do kubernetes"
 
   ingress = [
     {
