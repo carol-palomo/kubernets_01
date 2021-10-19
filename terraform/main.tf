@@ -100,5 +100,5 @@ output "k8s_master_ssh" {
 }
 
 output "k8s_worker_ssh" {
-  value = aws_instance.worker.public_dns
+  value = aws_instance.worker[count.index].public_dns
 }
