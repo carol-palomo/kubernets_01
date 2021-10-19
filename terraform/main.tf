@@ -6,7 +6,7 @@ resource "aws_instance" "master" {
   ami                     = "ami-09e67e426f25ce0d7"
   instance_type           = "t2.medium"
   key_name                = "id_rsa" # key chave publica cadastrada na AWS 
-  vpc_security_group_ids  = ["${aws_security_group.kubernetes_master.id}"]
+  vpc_security_group_ids  = ["${aws_security_group.kubernetes_master.id}", "${aws_security_group.kubernetes_geral.id}"]
   subnet_id               =  "subnet-0ab487dbac2dcfa24"
   associate_public_ip_address = true
   
@@ -28,7 +28,7 @@ resource "aws_instance" "worker" {
   ami                     = "ami-09e67e426f25ce0d7"
   instance_type           = "t2.micro"
   key_name                = "id_rsa" # key chave publica cadastrada na AWS 
-  vpc_security_group_ids  = ["${aws_security_group.kubernetes_workers.id}"]
+  vpc_security_group_ids  = ["${aws_security_group.kubernetes_workers.id}", "${aws_security_group.kubernetes_geral.id}"]
   subnet_id               =  "subnet-05880ea9006199004"
   associate_public_ip_address = true
   
