@@ -3,8 +3,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "master" {
+  count 3
   ami                     = "ami-09e67e426f25ce0d7"
-  instance_type           = "t2.medium"
+  instance_type           = "t2.large"
   key_name                = "id_rsa" # key chave publica cadastrada na AWS 
   vpc_security_group_ids  = ["${aws_security_group.kubernetes_master.id}", "${aws_security_group.kubernetes_geral.id}"]
   subnet_id               =  "subnet-0ab487dbac2dcfa24"
@@ -19,14 +20,14 @@ resource "aws_instance" "master" {
   }
 
   tags = {
-    Name = "k8s_master-carol"
+    Name = "k8s_master${count.index}-carol"
   }
 }
 
 resource "aws_instance" "worker" {
-  count = 2
+  count = 3
   ami                     = "ami-09e67e426f25ce0d7"
-  instance_type           = "t2.micro"
+  instance_type           = "t2.medium"
   key_name                = "id_rsa" # key chave publica cadastrada na AWS 
   vpc_security_group_ids  = ["${aws_security_group.kubernetes_workers.id}", "${aws_security_group.kubernetes_geral.id}"]
   subnet_id               =  "subnet-05880ea9006199004"
@@ -171,8 +172,16 @@ resource "aws_security_group" "kubernetes_geral" {
   }
 }
 
-output "k8s_master_ssh" {
-  value = aws_instance.master.public_dns
+output "k8s_master0_ssh" {
+  value = aws_instance.master[0].public_dns
+}
+
+output "k8s_master0_ssh" {
+  value = aws_instance.master[1].public_dns
+}
+
+output "k8s_master0_ssh" {
+  value = aws_instance.master[2].public_dns
 }
 
 output "k8s_worker0_ssh" {
@@ -181,4 +190,8 @@ output "k8s_worker0_ssh" {
 
 output "k8s_worker1_ssh" {
   value = aws_instance.worker[1].public_dns
+}
+
+output "k8s_worker2_ssh" {
+  value = aws_instance.worker[2].public_dns
 }
