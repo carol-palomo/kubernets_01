@@ -197,11 +197,11 @@ output "k8s_master0_ssh" {
   value = aws_instance.master[0].public_dns
 }
 
-output "k8s_master0_ssh" {
+output "k8s_master1_ssh" {
   value = aws_instance.master[1].public_dns
 }
 
-output "k8s_master0_ssh" {
+output "k8s_master2_ssh" {
   value = aws_instance.master[2].public_dns
 }
 
