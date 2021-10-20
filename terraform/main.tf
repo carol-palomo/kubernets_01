@@ -165,7 +165,7 @@ resource "aws_security_group" "kubernetes_geral" {
       description      = "all tcp entre master e nodes do kubernetes"
       from_port        = 0
       to_port          = 0
-      protocol         = "tcp"
+      protocol         = -1
       cidr_blocks      = null
       ipv6_cidr_blocks = null,
       prefix_list_ids = null,
