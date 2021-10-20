@@ -46,6 +46,27 @@ resource "aws_instance" "worker" {
   }
 }
 
+resource "aws_instance" "proxy" {
+  ami                     = "ami-09e67e426f25ce0d7"
+  instance_type           = "t2.micro"
+  key_name                = "id_rsa" # key chave publica cadastrada na AWS 
+  vpc_security_group_ids  = ["${aws_security_group.kubernetes_workers.id}", "${aws_security_group.kubernetes_geral.id}"]
+  subnet_id               =  "subnet-05880ea9006199004"
+  associate_public_ip_address = true
+  
+  root_block_device {
+    volume_size           = "8"
+    volume_type           = "gp2"
+    encrypted             = true
+    kms_key_id            = "f48a0432-3f72-4888-9b31-8bdf1c121a4c"
+    delete_on_termination = true
+  }
+
+  tags = {
+    Name = "k8s_proxy-carol"
+  }
+}
+
 
 resource "aws_security_group" "kubernetes_master" {
   name        = "kubernetes_master"
@@ -194,4 +215,9 @@ output "k8s_worker1_ssh" {
 
 output "k8s_worker2_ssh" {
   value = aws_instance.worker[2].public_dns
+}
+
+
+output "k8s_proxy_ssh" {
+  value = aws_instance.proxy.public_dns
 }
