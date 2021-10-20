@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "master" {
-  count 3
+  count = 3
   ami                     = "ami-09e67e426f25ce0d7"
   instance_type           = "t2.large"
   key_name                = "id_rsa" # key chave publica cadastrada na AWS 
