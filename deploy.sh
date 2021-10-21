@@ -108,4 +108,4 @@ ff02::3 ip6-allhosts
 " > ../ansible/01-k8s-install-masters_e_workers/host/hosts
 
 cd ../ansible/01-k8s-install-masters_e_workers
-ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key ~/Desktop/devops/treinamentoItau
+sudo ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /root/.ssh/id_rsa
