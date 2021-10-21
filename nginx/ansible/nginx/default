@@ -4,6 +4,7 @@ upstream loadbalancer {
   server 10.8.0.43:30002;
 }
 server {
+  listen 80;
   location / {
     proxy_pass http://loadbalancer;
   }
