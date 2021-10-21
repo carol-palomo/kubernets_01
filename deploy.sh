@@ -145,4 +145,4 @@ echo "
 # ansible-playbook -i hosts 2-provisionar-k8s-master.yml -u ubuntu --private-key ~/Desktop/devops/treinamentoItau
 " > 2-provisionar-k8s-master-auto-shell.yml
 
-ansible-playbook -i hosts 2-provisionar-k8s-master-auto-shell.yml -u ubuntu --private-key ~/Desktop/devops/treinamentoItau
+sudo ansible-playbook -i hosts 2-provisionar-k8s-master-auto-shell.yml -u ubuntu --private-key /root/.ssh/id_rsa
