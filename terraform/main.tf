@@ -193,31 +193,22 @@ resource "aws_security_group" "kubernetes_geral" {
   }
 }
 
-output "k8s_master0_ssh" {
-  value = aws_instance.master[0].public_dns
+output "k8s-masters" {
+  value = [
+    for key, item in aws_instance.master :
+      "k8s-master ${key+1} - ${item.private_ip} - ssh -i ~/Desktop/devops/treinamentoItau ubuntu@${item.public_dns} -o ServerAliveInterval=60"
+  ]
 }
 
-output "k8s_master1_ssh" {
-  value = aws_instance.master[1].public_dns
+  output "output-k8s_workers" {
+  value = [
+    for key, item in aws_instance.worker :
+      "k8s-workers ${key+1} - ${item.private_ip} - ssh -i ~/Desktop/devops/treinamentoItau ubuntu@${item.public_dns} -o ServerAliveInterval=60"
+  ]
 }
 
-output "k8s_master2_ssh" {
-  value = aws_instance.master[2].public_dns
-}
-
-output "k8s_worker0_ssh" {
-  value = aws_instance.worker[0].public_dns
-}
-
-output "k8s_worker1_ssh" {
-  value = aws_instance.worker[1].public_dns
-}
-
-output "k8s_worker2_ssh" {
-  value = aws_instance.worker[2].public_dns
-}
-
-
-output "k8s_proxy_ssh" {
-  value = aws_instance.proxy.public_dns
+output "output-k8s_proxy" {
+  value = [
+    "k8s_proxy - ${aws_instance.proxy.private_ip} - ssh -i ~/Desktop/devops/treinamentoItau ubuntu@${aws_instance.k8s_proxy.public_dns} -o ServerAliveInterval=60"
+  ]
 }
