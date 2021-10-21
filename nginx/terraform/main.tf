@@ -26,7 +26,8 @@ resource "aws_instance" "nginx" {
 resource "aws_security_group" "acessos_nginx" {
   name        = "acessos_nginx"
   description = "acessos inbound traffic"
-
+  vpc_id = "vpc-0304dcb48c5e67fa0"
+  
   ingress = [
     {
       description      = "SSH from VPC"
