@@ -23,10 +23,10 @@
       with_items:
         - nginx
 
-    - name: "Trocando nginx para cluster"
-      copy:
-        src: "nginx/default"
-        dest: "/etc/nginx/sites-available/default"
-      become: yes
-      notify:
-        - "restart nginx"
+#    - name: "Trocando nginx para cluster"
+#      copy:
+#        src: "nginx/default"
+#        dest: "/etc/nginx/sites-available/default"
+#      become: yes
+#      notify:
+#        - "restart nginx"
