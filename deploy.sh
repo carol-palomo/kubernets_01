@@ -1,9 +1,9 @@
 #!/bin/bash
 
 cd terraform
-~/terraform/terraform init
-~/terraform/terraform fmt
-~/terraform/terraform apply -auto-approve
+~/terraform init
+~/terraform fmt
+~/terraform apply -auto-approve
 
 echo  "Aguardando a criação das maquinas ..."
 sleep 5
