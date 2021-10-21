@@ -86,6 +86,6 @@ resource "aws_security_group" "acessos_nginx" {
 output "aws_instance_e_ssh" {
   value = [
     aws_instance.nginx.public_ip,
-    "ssh -i "/root/.ssh/id_rsa" ubuntu@${aws_instance.maquina_nginx.public_dns}"
+    {"ssh -i "/root/.ssh/id_rsa" ubuntu@${aws_instance.maquina_nginx.public_dns}"
   ]
 }
