@@ -1,0 +1,10 @@
+upstream loadbalancer {
+  server 10.8.0.46:30002;
+  server 10.8.0.39:30002;
+  server 10.8.0.43:30002;
+}
+server {
+  location / {
+    proxy_pass http://loadbalancer;
+  }
+}
