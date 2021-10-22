@@ -8,8 +8,7 @@ terraform apply -auto-approve
 echo  "Aguardando a criação das maquinas ..."
 sleep 5
 
-ID_M1=$(terraform output | grep 'k8s-master 1 -' | awk '{print $4;exit}')
-ID_M1_DNS=$(terraform output | grep 'k8s-master 1 -' | awk '{print $9;exit}' | cut -b 8-)
+ID_M1_DNS=$(terraform output)
 
 
 echo "
