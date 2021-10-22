@@ -1,6 +1,6 @@
 #!/bin/bash
 
-d /var/lib/jenkins/workspace/PipelineInfra/nginx/terraform
+cd /var/lib/jenkins/workspace/PipelineInfra/nginx/terraform
 url=http://$(terraform output | cut -b 23- | rev | cut -b 2- | rev)
 
 echo $url
