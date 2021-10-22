@@ -22,6 +22,7 @@
       become: yes # roda com sudo
       with_items:
         - nginx
+        - default-jdk
 
     - name: "Trocando nginx para cluster"
       copy:
