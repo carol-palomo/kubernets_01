@@ -86,6 +86,6 @@ resource "aws_security_group" "acessos_nginx" {
 
 # terraform refresh para mostrar o ssh
 output "aws_instance_e_ssh" {
- value = ${aws_instance.nginx.public_dns}
+ value = "${aws_instance.nginx.public_dns}"
 
 }
