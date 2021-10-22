@@ -13,6 +13,8 @@ echo $body
 if [$body =~ $regex] 
 then 
     echo "nginx esta no ar" 
+    exit 0
 else 
     echo "nginx fora" 
+    exit 1
 fi
