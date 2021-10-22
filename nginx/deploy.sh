@@ -12,7 +12,7 @@ sleep 5
 ID_M1_DNS=$(terraform output | cut -b 23- | rev | cut -b 2- | rev)
 
 
-echo "
+sudo echo "
 [ec2-nginx]
 $ID_M1_DNS
 
