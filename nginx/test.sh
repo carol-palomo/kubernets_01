@@ -2,11 +2,13 @@
 
 d /var/lib/jenkins/workspace/PipelineInfra/nginx/terraform
 url=http://$(terraform output | cut -b 23- | rev | cut -b 2- | rev)
-curl $url
+
+echo $url
 
 regex = 'Welcome to nginx!'
 
 body=$(curl $url)
+echo $body
 
 if [$body =~ $regex] 
 then 
