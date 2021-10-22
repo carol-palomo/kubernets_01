@@ -23,11 +23,3 @@
       with_items:
         - nginx
         - default-jdk
-
-    - name: "Trocando nginx para cluster"
-      copy:
-        src: "nginx/default"
-        dest: "/etc/nginx/sites-available/default"
-      become: yes
-      notify:
-        - "restart nginx"
