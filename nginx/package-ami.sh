@@ -3,7 +3,7 @@
 VERSAO=$(git describe --tags $(git rev-list --tags --max-count=1))
 
 cd /var/lib/jenkins/workspace/PipelineInfra/nginx/terraform
-RESOURCE_ID=$(terraform output aws_instance_id | grep resource_id | awk '{print $2;exit}' | sed -e "s/\",//g")
+RESOURCE_ID=$(terraform output aws_instance_id | cut -b 2- | rev | cut -b 2- | rev )
 
 cd /var/lib/jenkins/workspace/PipelineInfra/nginx/terraform-ami
 terraform init
