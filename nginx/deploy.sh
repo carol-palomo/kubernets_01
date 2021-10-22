@@ -12,7 +12,7 @@ sleep 5
 ID_M1_DNS=$(terraform output | cut -b 23- | rev | cut -b 2- | rev)
 echo ID_M1_DNS
 
-sudo echo "
+echo "
 [ec2-nginx]
 $ID_M1_DNS
 
@@ -21,5 +21,5 @@ $ID_M1_DNS
 echo  "Aguardando ..."
 sleep 5
 
-cd ../var/lib/jenkins/workspace/PipelineInfra/nginx/ansible
+cd /var/lib/jenkins/workspace/PipelineInfra/nginx/ansible
 ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /home/ubuntu/.ssh/id_rsa
