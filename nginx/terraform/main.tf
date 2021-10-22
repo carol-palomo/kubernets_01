@@ -5,7 +5,8 @@ provider "aws" {
 resource "aws_instance" "nginx" {
   ami                     = "ami-09e67e426f25ce0d7"
   instance_type           = "t2.micro"
-  key_name                = "id_rsa" # key chave publica cadastrada na AWS 
+##  key_name                = "id_rsa" # key chave publica cadastrada na AWS 
+  key_name                = "id_rsa_jenkins" # key chave publica cadastrada na AWS 
   vpc_security_group_ids  = ["${aws_security_group.acessos_nginx.id}"]
   subnet_id               =  "subnet-0ab487dbac2dcfa24"
   associate_public_ip_address = true
@@ -19,7 +20,7 @@ resource "aws_instance" "nginx" {
   }
 
   tags = {
-    Name = "nginx-carol"
+    Name = "nginx_jenkins-carol"
   }
 }
 
