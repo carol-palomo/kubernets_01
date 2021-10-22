@@ -1,20 +1,24 @@
 #!/bin/bash
 
 cd /var/lib/jenkins/workspace/PipelineInfra/nginx/terraform
-url=http://$(terraform output | cut -b 23- | rev | cut -b 2- | rev)
 
-echo $url
 
-regex = 'Welcome to nginx!'
+#!/bin/bash
+cd /var/lib/jenkins/workspace/PipelineInfra/nginx/terraform
 
-body=$(curl $url)
-echo $body
+uri=$(terraform output | cut -b 23- | rev | cut -b 2- | rev)
 
-if [$body =~ $regex] 
+echo $uri
+
+body=$(curl "http://$uri")
+
+regex='Welcome to nginx!'
+
+if [[ $body =~ $regex ]]
 then 
-    echo "nginx esta no ar" 
+    echo "::::: nginx está no ar :::::"
     exit 0
-else 
-    echo "nginx fora" 
+else
+    echo "::::: nginx não está no ar :::::"
     exit 1
 fi
