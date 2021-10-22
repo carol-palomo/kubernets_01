@@ -17,7 +17,8 @@ $ID_M1_DNS
 
 " > ../ansible/hosts
 
-
+echo  "Aguardando ..."
+sleep 5
 
 cd ../ansible
 ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /home/ubuntu/.ssh/id_rsa
