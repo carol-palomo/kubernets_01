@@ -1,9 +1,4 @@
 #!/bin/bash
-
-cd /var/lib/jenkins/workspace/PipelineInfra/nginx/terraform
-
-
-#!/bin/bash
 cd /var/lib/jenkins/workspace/PipelineInfra/nginx/terraform
 
 uri=$(terraform output | cut -b 23- | rev | cut -b 2- | rev)
