@@ -9,7 +9,7 @@ terraform apply -auto-approve
 echo  "Aguardando a criação das maquinas ..."
 sleep 5
 
-ID_M1_DNS=$(terraform output | cut -b 23- | rev | cut -b 2- | rev)
+ID_M1_DNS=$(terraform output aws_instance_e_ssh | cut -b 23- | rev | cut -b 2- | rev)
 echo ID_M1_DNS
 
 echo "
