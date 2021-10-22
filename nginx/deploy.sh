@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd /home/ubuntu/projetos/kubernets_01/nginx/
 cd terraform
 terraform init
 terraform fmt
