@@ -7,7 +7,7 @@ resource "aws_instance" "nginx" {
   instance_type           = "t2.micro"
 ##  key_name                = "id_rsa" # key chave publica cadastrada na AWS 
   key_name                = "id_rsa_jenkins" # key chave publica cadastrada na AWS 
-  vpc_security_group_ids  = ["${aws_security_group.acessos_nginx.id}"]
+  vpc_security_group_ids  = ["${aws_security_group.acessos_nginx_jenkins.id}"]
   subnet_id               =  "subnet-0ab487dbac2dcfa24"
   associate_public_ip_address = true
   
@@ -24,8 +24,8 @@ resource "aws_instance" "nginx" {
   }
 }
 
-resource "aws_security_group" "acessos_nginx" {
-  name        = "acessos_nginx"
+resource "aws_security_group" "acessos_nginx_jenkins" {
+  name        = "acessos_nginx_jenkins"
   description = "acessos inbound traffic"
   vpc_id = "vpc-0304dcb48c5e67fa0"
   
