@@ -10,7 +10,7 @@ echo  "Aguardando a criação das maquinas ..."
 sleep 5
 
 ID_M1_DNS=$(terraform output aws_instance_e_ssh | cut -b 2- | rev | cut -b 2- | rev)
-echo ID_M1_DNS
+echo $ID_M1_DNS
 
 echo "
 [ec2-nginx]
