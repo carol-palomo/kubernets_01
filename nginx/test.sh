@@ -1,7 +1,7 @@
 #!/bin/bash
 cd /var/lib/jenkins/workspace/PipelineInfra/nginx/terraform
 
-uri=$(terraform output | cut -b 23- | rev | cut -b 2- | rev)
+uri=$(terraform output aws_instance_e_ssh | cut -b 2- | rev | cut -b 2- | rev)
 
 echo $uri
 
