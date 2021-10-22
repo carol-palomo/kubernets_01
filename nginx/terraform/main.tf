@@ -89,3 +89,8 @@ output "aws_instance_e_ssh" {
   value = aws_instance.nginx.public_dns
 
 }
+
+output "aws_instance_id" {
+  value = aws_instance.nginx.id
+
+}
