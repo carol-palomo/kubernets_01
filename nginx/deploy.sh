@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd /var/lib/jenkins/workspace/PipelineInfra/nginx/
 cd terraform
 terraform init
 terraform fmt
