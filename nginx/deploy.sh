@@ -13,7 +13,7 @@ ID_M1_DNS=$(terraform output | grep 'k8s-master 1 -' | awk '{print $9;exit}' | c
 
 
 echo "
-[ec2-k8s-proxy]
+[ec2-nginx]
 $ID_M1_DNS
 
 " > ../ansible/hosts
