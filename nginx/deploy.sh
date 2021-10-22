@@ -22,4 +22,4 @@ echo  "Aguardando ..."
 sleep 5
 
 cd /var/lib/jenkins/workspace/PipelineInfra/nginx/ansible
-ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /home/ubuntu/.ssh/id_rsa
+ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa
